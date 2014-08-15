@@ -1,0 +1,13 @@
+useDynLib("NHMM")
+
+export(HMM,NHMM,NHMM_MVN, OBIC, Oz, OQQ, OXcoef, OWcoef, Oemparams)
+	   
+#exportPattern("^[[:alpha:]]+")
+import(Rcpp)
+import(MCMCpack)
+
+importFrom(BayesLogit, rpg)
+importFrom(msm, rtnorm)
+
+#importFrom(MCMCpack, riwish)
+importFrom(MASS, mvrnorm)
