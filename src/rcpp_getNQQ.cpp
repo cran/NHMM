@@ -22,9 +22,9 @@ using namespace Rcpp;
 
    
  // [[Rcpp::export]]
-Rcpp::NumericVector rcpp_getNQQ(Rcpp::NumericMatrix zbin, Rcpp::NumericMatrix beta, Rcpp::NumericMatrix XX) 
-{  int T=zbin.nrow();
-   int K=zbin.ncol();
+Rcpp::NumericVector rcpp_getNQQ(Rcpp::NumericMatrix beta, Rcpp::NumericMatrix XX) 
+{  int T=XX.nrow();
+   int K=beta.nrow();
    int L=XX.ncol();
    Rcpp::NumericVector QQf(K*K*T);
    Rcpp::NumericVector epsi(K*K*T);

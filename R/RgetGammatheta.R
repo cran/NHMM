@@ -28,8 +28,8 @@ RgetGammatheta=function(y,z, priors, theta, nmix, vvv,delt)
   J=dim(theta)[4]
   
   if(is.na(priors[2,1,1,1]))  #fixed AA parameter
-  {   for(v in 1:nmix)
-  {  AA=matrix(theta[1,v,,],K,J)   #K by J
+  { for(v in 1:nmix)
+    {AA=matrix(theta[1,v,,],K,J)   #K by J
      BB=matrix(theta[2,v,,],K,J)
      a.AA=matrix(priors[1,v,,],K,J)   #4,nmix,K,J
      b.AA=matrix(priors[2,v,,],K,J)    #precision
@@ -39,12 +39,16 @@ RgetGammatheta=function(y,z, priors, theta, nmix, vvv,delt)
      
      for(k in 1:K)
      {  for(j in 1:J)
-     {  n=sum(z==k & vvv[,j]==(v-1+delt))
-        if(n > 0) #ensure there is data in this state, if not skip
-        {     theta[1,v,k,j]=a.AA[k,j]
-              theta[2,v,k,j]=rgamma(1,n*theta[1,v,k,j] + a.BB[k,j], b.BB[k,j]+sum((y[,j])[z==k & vvv[,j]==(v-1+delt)]))
+        {  n=sum(z==k & vvv[,j]==(v-1+delt))
+           if(n > 0) #ensure there is data in this state, if not skip
+           {  yy=(y[,j])[z==k & vvv[,j]==(v-1+delt)]
+              theta[1,v,k,j]=a.AA[k,j]
+              theta[2,v,k,j]=rgamma(1,n*theta[1,v,k,j] + a.BB[k,j], b.BB[k,j]+sum(yy))
+          
+             #print("uhoh")
+             #print(yy)
+           }
         }
-     }
      }
   }
   theta
@@ -60,18 +64,29 @@ RgetGammatheta=function(y,z, priors, theta, nmix, vvv,delt)
        
        lll=numeric(5)
        for(k in 1:K)
-       {   n=sum(z==k & vvv[,j]==(v-1+delt))
-           if(n > 0) #ensure there is data in this state, if not skip
-           {  for(j in 1:J)
-           {  theta[2,v,k,j]=rgamma(1,n*AA[k,j] + a.BB[k,j], b.BB[k,j]+sum(y[z==k & vvv[,j]==(v-1+delt),j]))
-              aprop=rnorm(1,AA[k,j],prop[k,j]) #propopsal
-              if(aprop > 0)
-              {  one=sum(log(dgamma(y[z==k & vvv[,j]==(v-1+delt),j],aprop,b.AA[k,j])*dgamma(aprop,a.AA[k,j], b.AA[k,j])))
-                 two=sum(log(dgamma(y[z==k & vvv[,j]==(v-1+delt),j],AA[k,j],b.AA[k,j])*dgamma(AA[k,j],a.AA[k,j], b.AA[k,j])))
-                 alpha.mh=exp(one-two)
-                 if(runif(1) < alpha.mh){ theta[1,v,k,j]=aprop }
+       {  for(j in 1:J)
+          {   n=sum(z==k & vvv[,j]==(v-1+delt))
+              if(n > 1) #ensure there is data in this state, if not skip
+              {  yy=(y[,j])[z==k & vvv[,j]==(v-1+delt)]
+                 theta[2,v,k,j]=rgamma(1,n*AA[k,j] + a.BB[k,j], b.BB[k,j]+sum(yy))
+                 aprop=rnorm(1,AA[k,j],prop[k,j]) #propopsal
+                 if(aprop > 0)
+                 {  #one=sum(log(dgamma(yy,aprop,b.AA[k,j])*dgamma(aprop,a.AA[k,j], b.AA[k,j])))
+                    #two=sum(log(dgamma(yy,AA[k,j],b.AA[k,j])*dgamma(AA[k,j],a.AA[k,j], b.AA[k,j])))
+                    one=sum(log(dgamma(yy,aprop,b.AA[k,j])/dgamma(yy,AA[k,j],b.AA[k,j])))
+                    two=sum(log(dgamma(aprop,a.AA[k,j], b.AA[k,j])/dgamma(AA[k,j],a.AA[k,j], b.AA[k,j])))
+                    
+                    alpha.mh=exp(one+two)
+                   #one=(log(dgamma(yy,aprop,b.AA[k,j])))
+                   #two=(log(dgamma(yy,AA[k,j],b.AA[k,j])))
+                   #three=(log(dgamma(aprop,a.AA[k,j], b.AA[k,j])))
+                   # four=(log(dgamma(AA[k,j],a.AA[k,j], b.AA[k,j])))
+                   #alpha.mh=exp(sum(one-two+three-four))
+
+                 
+                    if(runif(1) < alpha.mh){ theta[1,v,k,j]=aprop }
+                 }
               }
-           }
            }
        }
     }

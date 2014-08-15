@@ -197,16 +197,15 @@ BEGIN_RCPP
 END_RCPP
 }
 // rcpp_getNQQ
-Rcpp::NumericVector rcpp_getNQQ(Rcpp::NumericMatrix zbin, Rcpp::NumericMatrix beta, Rcpp::NumericMatrix XX);
-RcppExport SEXP NHMM_rcpp_getNQQ(SEXP zbinSEXP, SEXP betaSEXP, SEXP XXSEXP) {
+Rcpp::NumericVector rcpp_getNQQ(Rcpp::NumericMatrix beta, Rcpp::NumericMatrix XX);
+RcppExport SEXP NHMM_rcpp_getNQQ(SEXP betaSEXP, SEXP XXSEXP) {
 BEGIN_RCPP
     SEXP __sexp_result;
     {
         Rcpp::RNGScope __rngScope;
-        Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type zbin(zbinSEXP );
         Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type beta(betaSEXP );
         Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type XX(XXSEXP );
-        Rcpp::NumericVector __result = rcpp_getNQQ(zbin, beta, XX);
+        Rcpp::NumericVector __result = rcpp_getNQQ(beta, XX);
         PROTECT(__sexp_result = Rcpp::wrap(__result));
     }
     UNPROTECT(1);
@@ -483,6 +482,22 @@ BEGIN_RCPP
         Rcpp::traits::input_parameter< Rcpp::NumericVector >::type par1(par1SEXP );
         Rcpp::traits::input_parameter< Rcpp::NumericVector >::type par2(par2SEXP );
         double __result = rcpp_rmix(fam, ppp, par1, par2);
+        PROTECT(__sexp_result = Rcpp::wrap(__result));
+    }
+    UNPROTECT(1);
+    return __sexp_result;
+END_RCPP
+}
+// rcpp_resetX
+Rcpp::NumericMatrix rcpp_resetX(Rcpp::NumericMatrix XXf, Rcpp::NumericMatrix zbinf);
+RcppExport SEXP NHMM_rcpp_resetX(SEXP XXfSEXP, SEXP zbinfSEXP) {
+BEGIN_RCPP
+    SEXP __sexp_result;
+    {
+        Rcpp::RNGScope __rngScope;
+        Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type XXf(XXfSEXP );
+        Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type zbinf(zbinfSEXP );
+        Rcpp::NumericMatrix __result = rcpp_resetX(XXf, zbinf);
         PROTECT(__sexp_result = Rcpp::wrap(__result));
     }
     UNPROTECT(1);

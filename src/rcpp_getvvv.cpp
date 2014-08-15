@@ -37,7 +37,9 @@ Rcpp::NumericMatrix  rcpp_getvvv(int fam, int K, int mixes, int delt, Rcpp::Nume
   
   for( int j = 0; j < J; j++ )
   {  for( int t = 0; t < T; t++ )
-     {   for( int i = 0; i < mixes; i++ )
+     {   
+       
+         for( int i = 0; i < mixes; i++ )
          {  ps(i)=ppp(rcpp_3d(t,j,i,T,J,mixes));
          }
        
@@ -54,7 +56,10 @@ Rcpp::NumericMatrix  rcpp_getvvv(int fam, int K, int mixes, int delt, Rcpp::Nume
             {  prob1(i)=1/mixes;
             }
         }
-         vvv(t,j)=rcpp_rmultinom(prob1)-1; //starts at zero
+        if(fam==1||fam==3)
+        { if(y(t,j)>0){ vvv(t,j)=rcpp_rmultinom(prob1)-1;}else{vvv(t,j)=0;} //starts at zero
+        }
+        if(fam==2){ vvv(t,j)=rcpp_rmultinom(prob1)-1;}
      }
   }
   return vvv;

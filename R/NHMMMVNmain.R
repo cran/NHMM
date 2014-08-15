@@ -76,7 +76,7 @@ for(j in 1:J){  mus[,j]=matrix(psi[,j],1,LL) %*% Wbin[,,j] }  ### need for rcpp_
 XX=matrix(1,T,L)
 XX[1,1:K]=c(1,rep(0,K-1))      ## z[0] is set to state 1
 XX[2:T,1:K]=zbin[1:(T-1),1:K]  #beta0  
-XX[,(K+1):L]=X         #L inputs
+XX[,(K+1):L]=t(X)         #L inputs
 
 vvv=matrix(1,T,J)
 
@@ -115,7 +115,7 @@ if(ypred>0 || !is.null(yhold))
    XXp=matrix(1,pT,L)
    XXp[1,1:K]=c(1,rep(0,K-1))      ## z[0] is set to state 1
    XXp[2:pT,1:K]=zbinp[1:(pT-1),1:K]  #beta0  
-   XXp[,(K+1):L]=Xp         #L inputs
+   XXp[,(K+1):L]=t(Xp)         #L inputs
    
    QQp=array(1/K,dim=c(K,K,pT))
    pls1=numeric(pT)
@@ -163,7 +163,7 @@ for(q in 1:Q)
    
     psi=RgetpsiMVN(y, z, psi, Wbin, psipriorm, psipriorp, A, K, thetainv)
                
-    if(theK>1){QQ=array(rcpp_getNQQ(zbin, beta, XX),dim=c(K,K,T))}
+    if(theK>1){QQ=array(rcpp_getNQQ(zbin, beta),dim=c(K,K,T))}
     
    
     denzity=rcpp_getdenzityMVN(A, c(Wbin), psi, K, y,c(thetainv),detS)
@@ -194,7 +194,7 @@ for(q in 1:Q)
    {
      zbinp=Cgetzbin(K,zp)
      XXp=CresetX(XXp,zbinp) 
-     if(theK>1){QQp=array(rcpp_getNQQ(zbinp, beta, XXp),dim=c(K,K,pT))}
+     if(theK>1){QQp=array(rcpp_getNQQ(zbinp, beta),dim=c(K,K,pT))}
      
      zp[1]= rcpp_rmultinom(QQp[z[T],,1])
      for(tt in 2:pT)

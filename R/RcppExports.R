@@ -41,8 +41,8 @@ rcpp_getdenzityMVN <- function(A, Wbin, psi, K, y, thetainv, detS) {
     .Call('NHMM_rcpp_getdenzityMVN', PACKAGE = 'NHMM', A, Wbin, psi, K, y, thetainv, detS)
 }
 
-rcpp_getNQQ <- function(zbin, beta, XX) {
-    .Call('NHMM_rcpp_getNQQ', PACKAGE = 'NHMM', zbin, beta, XX)
+rcpp_getNQQ <- function(beta, XX) {
+    .Call('NHMM_rcpp_getNQQ', PACKAGE = 'NHMM', beta, XX)
 }
 
 rcpp_getppp <- function(gamy, mus) {
@@ -103,6 +103,10 @@ rcpp_dmix <- function(fam, y, ppp, par1, par2) {
 
 rcpp_rmix <- function(fam, ppp, par1, par2) {
     .Call('NHMM_rcpp_rmix', PACKAGE = 'NHMM', fam, ppp, par1, par2)
+}
+
+rcpp_resetX <- function(XXf, zbinf) {
+    .Call('NHMM_rcpp_resetX', PACKAGE = 'NHMM', XXf, zbinf)
 }
 
 rcpp_rgamma <- function(a, b, c) {

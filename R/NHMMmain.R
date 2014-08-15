@@ -78,11 +78,12 @@ ppp=array(rcpp_getppp(gamy, mus),dim=c(T,J,mixes))
 XX=matrix(1,T,L)
 XX[1,1:K]=c(1,rep(0,K-1))      ## z[0] is set to state 1
 XX[2:T,1:K]=zbin[1:(T-1),1:K]  #beta0  
-XX[,(K+1):L]=X         #L inputs
+XX[,(K+1):L]=t(X)         #L inputs
 
 
 ##############  Set up the mixture component latent variable vvv
 vvv=matrix(0,T,J)
+
 if(delta==TRUE)  ### assign vvv to non-zero y's
 {  v1=rep(1:(mixes-1),each=sum(y>0)/(mixes-1))
    v1=c(rep(1,sum(y>0)-length(v1)),v1)  #makes sum(y>0) and v1 the same length
@@ -138,7 +139,7 @@ if(ypred>0 || !is.null(yhold))
    XXp=matrix(1,pT,L)
    XXp[1,1:K]=c(1,rep(0,K-1))      ## z[0] is set to state 1
    XXp[2:pT,1:K]=zbinp[1:(pT-1),1:K]  #beta0  
-   XXp[,(K+1):L]=Xp         #L inputs
+   XXp[,(K+1):L]=t(Xp)         #L inputs
    
    QQp=array(1/K,dim=c(K,K,pT))
    pls1=matrix(0,pT,J)
@@ -156,15 +157,18 @@ theK=K
 for(q in 1:Q) 
 {  
    if(theK>1){ beta=Rgetbeta(zbin,beta,XX, betapriorm, betapriorp) } #NHMM,  slow but optimized
-    theta=Rgettheta(y,z, priors, theta, nmix, vvv, delt)
     
     vvv=rcpp_getvvv(fam, K, mixes, delt, y,c(ppp), c(theta[1,,,]),  c(theta[2,,,]),  z)   
-    M=RgetM(A,K, psi, gamy, Wbin, gamboo, vvv )
+   
+   theta=Rgettheta(y,z, priors, theta, nmix, vvv, delt)
+   
+   
+   M=RgetM(A,K, psi, gamy, Wbin, gamboo, vvv )
     if(nmix>1){ gamy=Rgetgams(gamy, vvv,M,nmix,mixes) }
     psi=Rgetpsi(M, psi, Wbin, psipriorm, psipriorp, A, K)
                
            #QQ=array(rcpp_getQQ(K, z, dirprior,  subseqy) ,dim=c(K,K,T))
-    if(theK>1){QQ=array(rcpp_getNQQ(zbin, beta, XX),dim=c(K,K,T))}
+    if(theK>1){QQ=array(rcpp_getNQQ(beta, XX),dim=c(K,K,T))}
                 
     denzity=array(rcpp_getdenzity(A, c(Wbin), psi, gamy, fam, K, mixes, delt, y,c(ppp), c(theta[1,,,]),  c(theta[2,,,])) ,dim=c(K,T,J))
           
@@ -176,6 +180,8 @@ for(q in 1:Q)
     yfull=rcpp_getymiss(fam, K, z, c(ppp), c(theta[1,,,]),  c(theta[2,,,]),mixes, delt, J)
     y[yboo]=yfull[yboo]
     
+   
+   
     zbin=Cgetzbin(K,z) 
     Wbin[1:K,,]=array(rcpp_getWbin(z,K,J),dim=c(K,T,J))
     XX=CresetX(XX,zbin)   
@@ -190,14 +196,18 @@ for(q in 1:Q)
    
    if(q>(Q-ypred) || (!is.null(yhold) && q>burnin))
    {
-     zbinp=Cgetzbin(K,zp)
+     zbinp=Cgetzbin(K,zp)   ##needs to be done one at a time
      XXp=CresetX(XXp,zbinp) 
-     if(theK>1){QQp=array(rcpp_getNQQ(zbinp, beta, XXp),dim=c(K,K,pT))}
-     
+     if(theK>1){QQp[,,1:2]=array(rcpp_getNQQ(beta, XXp[1:2,]),dim=c(K,K,2))}  ### really only need QQ[,,1] but dimensionality needs 2     
      zp[1]= rcpp_rmultinom(QQp[z[T],,1])
+     
      for(tt in 2:pT)
-     {  zp[tt]=rcpp_rmultinom(QQp[zp[tt-1],,tt-1])
+     {  zbinp=Cgetzbin(K,zp)   ##needs to be done one at a time
+        XXp=CresetX(XXp,zbinp) 
+        if(theK>1){QQp[,,(tt-1):tt]=array(rcpp_getNQQ(beta, XXp[(tt-1):tt,]),dim=c(K,K,2))} ### really only want tt
+        zp[tt]=rcpp_rmultinom(QQp[zp[tt-1],,tt])
      }
+     
      Wbinp[1:K,,]=array(rcpp_getWbin(zp,K,J),dim=c(K,pT,J))
      for(j in 1:J){  musp[,j]=matrix(psi[,j],1,LL) %*% Wbinp[,,j]  }  ### need for rcpp_getppp
      pppp=array(rcpp_getppp(gamy, musp),dim=c(pT,J,mixes))
