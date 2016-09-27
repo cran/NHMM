@@ -40,12 +40,17 @@ if(emdist=="poisson"){fam=3}
 
 #### BICp
 BICp=(K-1)*(K+B)      #(K-1)*(K+B) betas (required)
-if(A>0){BICp=BICp+(A+K)*J+(K-2)*J}    #psi, gamma (have W)
+if(A>0){BICp=BICp+(A+K)*J+(K-2)*J}    #psi, gamma cutpoints (have W)
 if(A==0){BICp=BICp+(mixes-1)*K*J}   #ppp (no W)
 
-if(fam==1 || fam==2){ BICp=BICp+K*nmix*J+K*nmix*J }   ## gamma or normal
-if(fam==3){ BICp=BICp+K*nmix*J} ## poisson
+if(fam==1 ){ BICp=BICp+K*nmix*J+K*nmix*J }   ##  normal
 
+### FIXED the count on the gamma parameters  
+if(fam==2) { BICp=BICp+K*nmix*J
+             if(!is.na(priors[2,1,1,1])){BICp=BICp+K*nmix*J}  #this is 2 parameter gamma 
+			 }  #gamma
+
+if(fam==3){ BICp=BICp+K*nmix*J} ## poisson
 
 
 

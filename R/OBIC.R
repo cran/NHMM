@@ -60,8 +60,8 @@ OBIC=function(nhmmobj, outfile=NULL)
   L=B+K
   
   
-  BICf=-2*mean(loglik)+BICp*log(T)
-  AICf=-2*mean(loglik)+2*BICp
+  BICf=-2*max(loglik)+BICp*log(T)
+  AICf=-2*max(loglik)+2*BICp
   print(paste("Parameter count:  ",BICp,sep=""))
   print(paste("BIC:  ",round(BICf,2), " (favored method)",sep=""))
   print(paste("AIC:  ", round(AICf,2),sep=""))
