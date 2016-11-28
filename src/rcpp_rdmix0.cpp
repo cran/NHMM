@@ -72,16 +72,16 @@ double rcpp_rmix0(int fam, Rcpp::NumericVector ppp, Rcpp::NumericVector par1, Rc
 
 
 
-// [[Rcpp::export]]
+// [[Rcpp::export]]  
 Rcpp::NumericVector rcpp_dmix(int fam, double y, Rcpp::NumericVector ppp, Rcpp::NumericVector par1, Rcpp::NumericVector par2)  
 {    
    int nm=ppp.size();
    Rcpp::NumericVector dd(nm);
    
    for( int i = 0; i < nm; i++ )
-   {   if(fam==1){dd(i)=ppp(i)*rcpp_dgamma(y,par1(i-1),par2(i-1));}
-       if(fam==2){dd(i)=ppp(i)*rcpp_dnorm(y,par1(i-1),sqrt(par2(i-1)));}
-       if(fam==3){dd(i)=ppp(i)*rcpp_dpois(y,par1(i-1));}
+   {   if(fam==1){dd(i)=ppp(i)*rcpp_dgamma(y,par1(i),par2(i));} 
+       if(fam==2){dd(i)=ppp(i)*rcpp_dnorm(y,par1(i),sqrt(par2(i)));}
+       if(fam==3){dd(i)=ppp(i)*rcpp_dpois(y,par1(i));}
    }
    return dd;
 }
@@ -95,9 +95,9 @@ double rcpp_rmix(int fam, Rcpp::NumericVector ppp, Rcpp::NumericVector par1, Rcp
    v=rcpp_rmultinom(ppp)-1;
    double rr;
    
-   if(fam==1) {rr=rcpp_rgamma(1,par1(v-1),par2(v-1));}
-   if(fam==2) {rr=rcpp_rnorm(1,par1(v-1),sqrt(par2(v-1)));}
-   if(fam==3) {rr=rcpp_rpois(1,par1(v-1));}
+   if(fam==1) {rr=rcpp_rgamma(1,par1(v),par2(v));}
+   if(fam==2) {rr=rcpp_rnorm(1,par1(v),sqrt(par2(v)));}
+   if(fam==3) {rr=rcpp_rpois(1,par1(v));}
       
    return rr;
 }

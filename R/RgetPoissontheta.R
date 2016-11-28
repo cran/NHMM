@@ -23,8 +23,7 @@ RgetPoissontheta=function(y,z, priors, theta, nmix, vvv,delt)
   J=dim(theta)[4]
   
   for(v in 1:nmix)
-  {   for(v in 1:nmix)
-      {  
+  {    
          a.AA=matrix(priors[1,v,,], K,J)   #4,nmix,K,J
          b.AA=matrix(priors[2,v,,], K,J)    #precision
          #as.matrix(priors[3,v,,])
@@ -40,7 +39,7 @@ RgetPoissontheta=function(y,z, priors, theta, nmix, vvv,delt)
                }
             }
           }
-      }
+      
   }
   theta
 }

@@ -88,7 +88,7 @@
 #'         the output will be written line by line and not overburden the memory limit
 #'         outdir needs to end with a slash or double slash depending on OS. 
 #'         
-#'  @param ymiss [optional-TRUE/FALSE] if outdir is specified then draws for any missing
+#' @param ymiss [optional-TRUE/FALSE] if outdir is specified then draws for any missing
 #'                data points will be saved to ymiss-J*.txt. There will be one data point for
 #'                each sequence of length Tmiss (the amount missing from that sequence).
 #'                Each row of the output file will be an iteration of the algorithm after burnin is
