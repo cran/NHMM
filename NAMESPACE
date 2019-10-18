@@ -1,4 +1,6 @@
-useDynLib("NHMM")
+#useDynLib("NHMM", .registration = TRUE, .fixes = "C_")
+useDynLib("NHMM", .registration = TRUE)
+
 
 export(HMM,NHMM,NHMM_MVN, OBIC, Oz, OQQ, OXcoef, OWcoef, Oemparams)
 	   

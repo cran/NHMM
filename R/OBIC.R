@@ -36,8 +36,6 @@
 #' @param outfile a directory to put the .png plot
 #' @return BIC  
 #' @return output: AIC, BIC, PLS [if yhold data was provided], log-likelihood to the GUI and a plot of the log-likelihood
-#' @export
-#' @keywords AIC BIC log-likelihood PLS
 #' @examples #OBIC(my.nhmm) 
 
 

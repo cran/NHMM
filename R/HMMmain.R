@@ -16,7 +16,6 @@
 #############################################################
 
 
-
 HMMmain=function(Rgettheta, z, theta, y, yboo, subseqy, subboo, dirprior, K, iters, emdist, burnin, nmix,  W, psipriorm, psipriorp,  priors, outdir,outboo, delta, yrep, Wp, ypred,pT, yhold, ymiss)
 {
 
@@ -248,13 +247,13 @@ close(pb)
    if(!is.null(yhold))  #PLS    
    {  PLS=mean(na.omit(log(pls3)))
    }
-
-
+  
+   B=1
    if(outboo==FALSE)
-   {  fin=list(fam,T,J,K,A,iters, burnin, yrep, outboo,outdir, loglik, BICp, meanQQ,  thetasave, psisave, zsave, PLS)
-      names(fin)=c("fam","T","J","K","A","iters", "burnin","yrep", "outboo","outdir", "loglik", "BICp", "meanQQ", "thetasave", "psisave", "zsave", "PLS")
-   }else{  fin=list(fam,T,J,K,A,iters, burnin,yrep,outboo,outdir,loglik, BICp, meanQQ, PLS)
-      names(fin)=c("fam","T","J","K","A","iters", "burnin","yrep", "outboo","outdir", "loglik", "BICp", "meanQQ", "PLS")
+   {  fin=list(fam,T,J,K,A,B,iters, burnin, yrep, outboo,outdir, loglik, BICp, meanQQ,  thetasave, psisave, zsave, PLS)
+      names(fin)=c("fam","T","J","K","A","B","iters", "burnin","yrep", "outboo","outdir", "loglik", "BICp", "meanQQ", "thetasave", "psisave", "zsave", "PLS")
+   }else{  fin=list(fam,T,J,K,A,B,iters, burnin,yrep,outboo,outdir,loglik, BICp, meanQQ, PLS)
+      names(fin)=c("fam","T","J","K","A","B","iters", "burnin","yrep", "outboo","outdir", "loglik", "BICp", "meanQQ", "PLS")
    }
    fin
 }

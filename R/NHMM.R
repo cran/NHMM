@@ -1,3 +1,18 @@
+#v3.9 change is RgetNormaltheta.R and RgetGammatheta.R, RgetthetaMVN.R, RgetPoissontheta.R
+# minimum of 3 points needed, could even set n>5 or 10 if it helps. need minimal data to draw theta and beta parameters.
+
+# Added n>2 data points needed in a state to Rgetbeta.R
+
+#v3.9 Cgetz.R added a portion to assign 4 data points at random to empty (or near empty) state to restart it
+
+
+#v3.7 & v3.9 --- change in rcpp_getymiss.cpp  
+#ADDED delt==1 to the case if(yy(t,j)<0.1 && yy(t,j)< -0.1 && delt==1)  {yy(t,j)=0;}
+#only force low values to zero if there is a point mass at zero (delt==1)
+#added the < -0.1 to have point mass work with Normal distribution
+
+
+
 ################################################################
 ## Copyright 2014 Tracy Holsclaw.
 
@@ -122,8 +137,6 @@
 #'           PLS is the average PLS across sequences.
 #'             
 #' @return my.nhmm object  
-#' @export
-#' @keywords Bayesian NHMM
 #' @examples ## Gamma or Exponential
 #' ### if "priors" is not specified, this is an Exponetial distribution
 #' data(NHMMdata)

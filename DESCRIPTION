@@ -1,9 +1,9 @@
 Package: NHMM
 Type: Package
-Title: Bayesian Non-Homogenous Markov and Mixture Models (Multiple Time
-        Series)
-Version: 3.7
-Date: 2016-11-23
+Title: Bayesian Non-Homogeneous Markov and Mixture Models for Multiple
+        Time Series
+Version: 3.9
+Date: 2019-10-10
 Author: Tracy Holsclaw
 Acknowledgements: This work was supported by a grant from the U.S.
         Department of Energy, (through the Earth System Models (EaSM)
@@ -14,16 +14,16 @@ Acknowledgements: This work was supported by a grant from the U.S.
         International Research Institute for Climate and Society at The
         Earth Institute at Columbia University.
 Maintainer: Tracy Holsclaw <iamrandom@iamrandom.com>
-Description: Bayesian HMM and NHMM modeling for multiple time series. The
-    emission distribution can be mixtures of Gammas, Poissons, Normals and zero
+Description: Holsclaw, Greene, Robertson, and Smyth (2017) <doi:10.1214/16-AOAS1009>. Bayesian HMM and NHMM modeling for multiple time series. The emission distribution can be mixtures of Exponential, Gamma, Poisson, or Normal distributions, and zero
     inflation is possible.
 License: GPL (>= 3)
 Imports: Rcpp (>= 0.11.0)
 LinkingTo: Rcpp
 Depends: BayesLogit, msm, MCMCpack, MASS
 URL: http://iamrandom.com/nhmm-package
-RoxygenNote: 5.0.1
+RoxygenNote: 6.1.1
+Encoding: UTF-8
 NeedsCompilation: yes
-Packaged: 2016-11-28 20:19:51 UTC; iamrandom
+Packaged: 2019-10-18 16:37:13 UTC; iamrandom
 Repository: CRAN
-Date/Publication: 2016-11-28 21:53:51
+Date/Publication: 2019-10-18 21:20:15 UTC

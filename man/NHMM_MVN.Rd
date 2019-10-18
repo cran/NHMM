@@ -6,9 +6,9 @@
 \usage{
 NHMM_MVN(y, subseq = NULL, X = NULL, betapriorm = NULL,
   betapriorp = NULL, K = 2, iters = 1000, burnin = 200, W = NULL,
-  psipriorm = NULL, psipriorp = NULL, priors1 = NULL, priors2 = NULL,
-  outdir = NULL, ymiss = FALSE, yrep = 0, ypred = 0, Xp = NULL,
-  Wp = NULL, yhold = NULL)
+  psipriorm = NULL, psipriorp = NULL, priors1 = NULL,
+  priors2 = NULL, outdir = NULL, ymiss = FALSE, yrep = 0,
+  ypred = 0, Xp = NULL, Wp = NULL, yhold = NULL)
 }
 \arguments{
 \item{y}{T by J matrix of data (J=1 is sufficient)
@@ -128,6 +128,3 @@ tt=Oemparams(my.nhmm1,FALSE)  #just Sigma matrix for MVN, returns mean of Sigma
  #Could try it with K=1, to compare K=1 to K=3
  }
 }
-\keyword{Bayesian}
-\keyword{NHMM}
-

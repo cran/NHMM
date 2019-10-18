@@ -39,6 +39,3 @@ each has 2 parameters (Gamma and Normal) or 1 parameter (Poisson) per mixture co
 #thetas=Oemparams(my.nhmm, FALSE); 
 #thetas[,,,,3]  #mean values
 }
-\keyword{emission}
-\keyword{parameters}
-

@@ -30,8 +30,6 @@
 #' the most probable state sequence. If the number of states in 
 #' the histogram is less than K, it probably means you should probably
 #' re-run the model with smaller K as some of the states have disappeared.
-#' @export
-#' @keywords Viterbi
 #' @examples #Oz(my.nhmm) 
 
 

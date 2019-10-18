@@ -35,8 +35,6 @@
 #' @return output: outputs statements of 90% and 95% significance of the Markov coefficients 
 #' and each X input coefficients (if any of the K-1 coefficients for a variable are significant then that
 #' variable is deemed signficant.)
-#' @export
-#' @keywords coefficients
 #' @examples #thetas=OXcoef(my.nhmm, FALSE); 
 #' #thetas[,,,,3]  #mean values
 

@@ -35,5 +35,3 @@ used to determine the mixing weights of the mixture components of the emission d
 #thetas=OWcoef(my.nhmm, FALSE); 
 #thetas[,,,,3]  #mean values
 }
-\keyword{coefficients}
-

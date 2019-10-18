@@ -37,7 +37,7 @@ using namespace Rcpp;
         if( x < probsum(0) ){ v=0; }
         
         for( int k = 0; k < (Kf-1); k++ )
-        {  if(x > probsum(k) & x< probsum(k+1)){v=k+1;} 
+        {  if((x > probsum(k)) & (x< probsum(k+1))){v=k+1;} 
         }
         if(x > probsum(Kf-1)){v=Kf-1;}
         

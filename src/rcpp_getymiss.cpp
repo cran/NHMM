@@ -45,7 +45,8 @@ Rcpp::NumericMatrix rcpp_getymiss(int fam, int K, Rcpp::NumericVector z, Rcpp::N
              if(delt==0){yy(t,j)=rcpp_rmix(fam,ps,th1,th2);} 
              if(delt==1){yy(t,j)=rcpp_rmix0(fam,ps,th1,th2);} 
              
-             if(yy(t,j)<0.1){yy(t,j)=0;}
+             if(yy(t,j)<0.1 && yy(t,j)> -0.1 && delt==1){yy(t,j)=0;}  //problem line for delt==0
+                                          //if(yy(t,j)<0.1 && delt==1)  {yy(t,j)=0;} 
          }
       }
     return yy;

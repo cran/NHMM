@@ -34,5 +34,3 @@ variable is deemed signficant.)
 #thetas=OXcoef(my.nhmm, FALSE); 
 #thetas[,,,,3]  #mean values
 }
-\keyword{coefficients}
-

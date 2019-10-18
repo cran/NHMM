@@ -20,6 +20,9 @@
 ## no W
 ## no nmix
 
+## line 43 updated in v3.9
+# v3.9 n>0 now n>1  need at least two pieces of data to estimate parameters
+
 
 
 RgetGammatheta=function(y,z, priors, theta, nmix, vvv,delt)  
@@ -40,7 +43,7 @@ RgetGammatheta=function(y,z, priors, theta, nmix, vvv,delt)
      for(k in 1:K)
      {  for(j in 1:J)
         {  n=sum(z==k & vvv[,j]==(v-1+delt))
-           if(n > 0) #ensure there is data in this state, if not skip
+           if(n > 2) #ensure there is data in this state, if not skip
            {  yy=(y[,j])[z==k & vvv[,j]==(v-1+delt)]
               theta[1,v,k,j]=a.AA[k,j]
               theta[2,v,k,j]=rgamma(1,n*theta[1,v,k,j] + a.BB[k,j], b.BB[k,j]+sum(yy))
@@ -66,7 +69,7 @@ RgetGammatheta=function(y,z, priors, theta, nmix, vvv,delt)
        for(k in 1:K)
        {  for(j in 1:J)
           {   n=sum(z==k & vvv[,j]==(v-1+delt))
-              if(n > 1) #ensure there is data in this state, if not skip
+              if(n > 2) #ensure there is data in this state, if not skip
               {  yy=(y[,j])[z==k & vvv[,j]==(v-1+delt)]
                  theta[2,v,k,j]=rgamma(1,n*AA[k,j] + a.BB[k,j], b.BB[k,j]+sum(yy))
                  aprop=rnorm(1,AA[k,j],prop[k,j]) #propopsal

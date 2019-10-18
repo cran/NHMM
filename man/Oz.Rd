@@ -27,5 +27,3 @@ re-run the model with smaller K as some of the states have disappeared.
 \examples{
 #Oz(my.nhmm) 
 }
-\keyword{Viterbi}
-

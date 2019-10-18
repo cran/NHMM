@@ -7,7 +7,7 @@ using namespace Rcpp;
 
 // Crtnorm
 Rcpp::NumericVector Crtnorm(int a, Rcpp::NumericVector muf, Rcpp::NumericVector sigf, Rcpp::NumericVector lowf, Rcpp::NumericVector upf, Rcpp::NumericVector boolowf, Rcpp::NumericVector booupf);
-RcppExport SEXP NHMM_Crtnorm(SEXP aSEXP, SEXP mufSEXP, SEXP sigfSEXP, SEXP lowfSEXP, SEXP upfSEXP, SEXP boolowfSEXP, SEXP booupfSEXP) {
+RcppExport SEXP _NHMM_Crtnorm(SEXP aSEXP, SEXP mufSEXP, SEXP sigfSEXP, SEXP lowfSEXP, SEXP upfSEXP, SEXP boolowfSEXP, SEXP booupfSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -24,7 +24,7 @@ END_RCPP
 }
 // rcpp_3d
 int rcpp_3d(int jf, int kf, int lf, int Jf, int Kf, int Lf);
-RcppExport SEXP NHMM_rcpp_3d(SEXP jfSEXP, SEXP kfSEXP, SEXP lfSEXP, SEXP JfSEXP, SEXP KfSEXP, SEXP LfSEXP) {
+RcppExport SEXP _NHMM_rcpp_3d(SEXP jfSEXP, SEXP kfSEXP, SEXP lfSEXP, SEXP JfSEXP, SEXP KfSEXP, SEXP LfSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -40,7 +40,7 @@ END_RCPP
 }
 // rcpp_arraytomat
 Rcpp::NumericMatrix rcpp_arraytomat(Rcpp::NumericVector arr3d, int c, int A, int B, int C);
-RcppExport SEXP NHMM_rcpp_arraytomat(SEXP arr3dSEXP, SEXP cSEXP, SEXP ASEXP, SEXP BSEXP, SEXP CSEXP) {
+RcppExport SEXP _NHMM_rcpp_arraytomat(SEXP arr3dSEXP, SEXP cSEXP, SEXP ASEXP, SEXP BSEXP, SEXP CSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -55,7 +55,7 @@ END_RCPP
 }
 // rcpp_dgamma
 double rcpp_dgamma(double a, double b, double c);
-RcppExport SEXP NHMM_rcpp_dgamma(SEXP aSEXP, SEXP bSEXP, SEXP cSEXP) {
+RcppExport SEXP _NHMM_rcpp_dgamma(SEXP aSEXP, SEXP bSEXP, SEXP cSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -68,7 +68,7 @@ END_RCPP
 }
 // rcpp_dmvnorm
 double rcpp_dmvnorm(Rcpp::NumericVector dataf, Rcpp::NumericVector meanf, Rcpp::NumericMatrix Siginvf, double detf);
-RcppExport SEXP NHMM_rcpp_dmvnorm(SEXP datafSEXP, SEXP meanfSEXP, SEXP SiginvfSEXP, SEXP detfSEXP) {
+RcppExport SEXP _NHMM_rcpp_dmvnorm(SEXP datafSEXP, SEXP meanfSEXP, SEXP SiginvfSEXP, SEXP detfSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -82,7 +82,7 @@ END_RCPP
 }
 // rcpp_dnorm
 double rcpp_dnorm(double a, double b, double c);
-RcppExport SEXP NHMM_rcpp_dnorm(SEXP aSEXP, SEXP bSEXP, SEXP cSEXP) {
+RcppExport SEXP _NHMM_rcpp_dnorm(SEXP aSEXP, SEXP bSEXP, SEXP cSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -95,7 +95,7 @@ END_RCPP
 }
 // rcpp_dot
 double rcpp_dot(Rcpp::NumericVector c, Rcpp::NumericVector d);
-RcppExport SEXP NHMM_rcpp_dot(SEXP cSEXP, SEXP dSEXP) {
+RcppExport SEXP _NHMM_rcpp_dot(SEXP cSEXP, SEXP dSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -107,7 +107,7 @@ END_RCPP
 }
 // rcpp_dpois
 double rcpp_dpois(double a, double b);
-RcppExport SEXP NHMM_rcpp_dpois(SEXP aSEXP, SEXP bSEXP) {
+RcppExport SEXP _NHMM_rcpp_dpois(SEXP aSEXP, SEXP bSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -117,9 +117,48 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// rcpp_getNQQ
+Rcpp::NumericVector rcpp_getNQQ(Rcpp::NumericMatrix beta, Rcpp::NumericMatrix XX);
+RcppExport SEXP _NHMM_rcpp_getNQQ(SEXP betaSEXP, SEXP XXSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type beta(betaSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type XX(XXSEXP);
+    rcpp_result_gen = Rcpp::wrap(rcpp_getNQQ(beta, XX));
+    return rcpp_result_gen;
+END_RCPP
+}
+// rcpp_getQQ
+Rcpp::NumericVector rcpp_getQQ(int K, Rcpp::NumericVector z, Rcpp::NumericMatrix dirprior, Rcpp::NumericVector subseqy);
+RcppExport SEXP _NHMM_rcpp_getQQ(SEXP KSEXP, SEXP zSEXP, SEXP dirpriorSEXP, SEXP subseqySEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type K(KSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type z(zSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type dirprior(dirpriorSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type subseqy(subseqySEXP);
+    rcpp_result_gen = Rcpp::wrap(rcpp_getQQ(K, z, dirprior, subseqy));
+    return rcpp_result_gen;
+END_RCPP
+}
+// rcpp_getWbin
+Rcpp::NumericVector rcpp_getWbin(Rcpp::NumericVector z, int K, int J);
+RcppExport SEXP _NHMM_rcpp_getWbin(SEXP zSEXP, SEXP KSEXP, SEXP JSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type z(zSEXP);
+    Rcpp::traits::input_parameter< int >::type K(KSEXP);
+    Rcpp::traits::input_parameter< int >::type J(JSEXP);
+    rcpp_result_gen = Rcpp::wrap(rcpp_getWbin(z, K, J));
+    return rcpp_result_gen;
+END_RCPP
+}
 // rcpp_getdenzity
 Rcpp::NumericVector rcpp_getdenzity(int A, Rcpp::NumericVector Wbin, Rcpp::NumericMatrix psi, Rcpp::NumericMatrix gamy, int fam, int K, int mixes, int delt, Rcpp::NumericMatrix y, Rcpp::NumericVector ppp, Rcpp::NumericVector theta1, Rcpp::NumericVector theta2);
-RcppExport SEXP NHMM_rcpp_getdenzity(SEXP ASEXP, SEXP WbinSEXP, SEXP psiSEXP, SEXP gamySEXP, SEXP famSEXP, SEXP KSEXP, SEXP mixesSEXP, SEXP deltSEXP, SEXP ySEXP, SEXP pppSEXP, SEXP theta1SEXP, SEXP theta2SEXP) {
+RcppExport SEXP _NHMM_rcpp_getdenzity(SEXP ASEXP, SEXP WbinSEXP, SEXP psiSEXP, SEXP gamySEXP, SEXP famSEXP, SEXP KSEXP, SEXP mixesSEXP, SEXP deltSEXP, SEXP ySEXP, SEXP pppSEXP, SEXP theta1SEXP, SEXP theta2SEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -141,7 +180,7 @@ END_RCPP
 }
 // rcpp_getdenzityMVN
 Rcpp::NumericMatrix rcpp_getdenzityMVN(int A, Rcpp::NumericVector Wbin, Rcpp::NumericMatrix psi, int K, Rcpp::NumericMatrix y, Rcpp::NumericVector thetainv, Rcpp::NumericVector detS);
-RcppExport SEXP NHMM_rcpp_getdenzityMVN(SEXP ASEXP, SEXP WbinSEXP, SEXP psiSEXP, SEXP KSEXP, SEXP ySEXP, SEXP thetainvSEXP, SEXP detSSEXP) {
+RcppExport SEXP _NHMM_rcpp_getdenzityMVN(SEXP ASEXP, SEXP WbinSEXP, SEXP psiSEXP, SEXP KSEXP, SEXP ySEXP, SEXP thetainvSEXP, SEXP detSSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -156,21 +195,9 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// rcpp_getNQQ
-Rcpp::NumericVector rcpp_getNQQ(Rcpp::NumericMatrix beta, Rcpp::NumericMatrix XX);
-RcppExport SEXP NHMM_rcpp_getNQQ(SEXP betaSEXP, SEXP XXSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type beta(betaSEXP);
-    Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type XX(XXSEXP);
-    rcpp_result_gen = Rcpp::wrap(rcpp_getNQQ(beta, XX));
-    return rcpp_result_gen;
-END_RCPP
-}
 // rcpp_getppp
 Rcpp::NumericVector rcpp_getppp(Rcpp::NumericMatrix gamy, Rcpp::NumericMatrix mus);
-RcppExport SEXP NHMM_rcpp_getppp(SEXP gamySEXP, SEXP musSEXP) {
+RcppExport SEXP _NHMM_rcpp_getppp(SEXP gamySEXP, SEXP musSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -180,23 +207,9 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// rcpp_getQQ
-Rcpp::NumericVector rcpp_getQQ(int K, Rcpp::NumericVector z, Rcpp::NumericMatrix dirprior, Rcpp::NumericVector subseqy);
-RcppExport SEXP NHMM_rcpp_getQQ(SEXP KSEXP, SEXP zSEXP, SEXP dirpriorSEXP, SEXP subseqySEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< int >::type K(KSEXP);
-    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type z(zSEXP);
-    Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type dirprior(dirpriorSEXP);
-    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type subseqy(subseqySEXP);
-    rcpp_result_gen = Rcpp::wrap(rcpp_getQQ(K, z, dirprior, subseqy));
-    return rcpp_result_gen;
-END_RCPP
-}
 // rcpp_getsumz1
 Rcpp::NumericMatrix rcpp_getsumz1(int Kf, int Jf, int Tf, Rcpp::NumericVector zf, Rcpp::NumericVector Sigmainvf, Rcpp::NumericMatrix in2f);
-RcppExport SEXP NHMM_rcpp_getsumz1(SEXP KfSEXP, SEXP JfSEXP, SEXP TfSEXP, SEXP zfSEXP, SEXP SigmainvfSEXP, SEXP in2fSEXP) {
+RcppExport SEXP _NHMM_rcpp_getsumz1(SEXP KfSEXP, SEXP JfSEXP, SEXP TfSEXP, SEXP zfSEXP, SEXP SigmainvfSEXP, SEXP in2fSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -212,7 +225,7 @@ END_RCPP
 }
 // rcpp_getsumz2
 Rcpp::NumericVector rcpp_getsumz2(int llf, int LLf, int Kf, int Jf, int Tf, Rcpp::NumericVector zf, Rcpp::NumericVector Sigmainvf, Rcpp::NumericVector in2f, Rcpp::NumericMatrix yf, Rcpp::NumericMatrix betaemf, Rcpp::NumericMatrix betaem0f);
-RcppExport SEXP NHMM_rcpp_getsumz2(SEXP llfSEXP, SEXP LLfSEXP, SEXP KfSEXP, SEXP JfSEXP, SEXP TfSEXP, SEXP zfSEXP, SEXP SigmainvfSEXP, SEXP in2fSEXP, SEXP yfSEXP, SEXP betaemfSEXP, SEXP betaem0fSEXP) {
+RcppExport SEXP _NHMM_rcpp_getsumz2(SEXP llfSEXP, SEXP LLfSEXP, SEXP KfSEXP, SEXP JfSEXP, SEXP TfSEXP, SEXP zfSEXP, SEXP SigmainvfSEXP, SEXP in2fSEXP, SEXP yfSEXP, SEXP betaemfSEXP, SEXP betaem0fSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -233,7 +246,7 @@ END_RCPP
 }
 // rcpp_getvvv
 Rcpp::NumericMatrix rcpp_getvvv(int fam, int K, int mixes, int delt, Rcpp::NumericMatrix y, Rcpp::NumericVector ppp, Rcpp::NumericVector theta1, Rcpp::NumericVector theta2, Rcpp::NumericVector z);
-RcppExport SEXP NHMM_rcpp_getvvv(SEXP famSEXP, SEXP KSEXP, SEXP mixesSEXP, SEXP deltSEXP, SEXP ySEXP, SEXP pppSEXP, SEXP theta1SEXP, SEXP theta2SEXP, SEXP zSEXP) {
+RcppExport SEXP _NHMM_rcpp_getvvv(SEXP famSEXP, SEXP KSEXP, SEXP mixesSEXP, SEXP deltSEXP, SEXP ySEXP, SEXP pppSEXP, SEXP theta1SEXP, SEXP theta2SEXP, SEXP zSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -250,22 +263,9 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// rcpp_getWbin
-Rcpp::NumericVector rcpp_getWbin(Rcpp::NumericVector z, int K, int J);
-RcppExport SEXP NHMM_rcpp_getWbin(SEXP zSEXP, SEXP KSEXP, SEXP JSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type z(zSEXP);
-    Rcpp::traits::input_parameter< int >::type K(KSEXP);
-    Rcpp::traits::input_parameter< int >::type J(JSEXP);
-    rcpp_result_gen = Rcpp::wrap(rcpp_getWbin(z, K, J));
-    return rcpp_result_gen;
-END_RCPP
-}
 // rcpp_getymiss
 Rcpp::NumericMatrix rcpp_getymiss(int fam, int K, Rcpp::NumericVector z, Rcpp::NumericVector ppp, Rcpp::NumericVector theta1, Rcpp::NumericVector theta2, int mixes, int delt, int J);
-RcppExport SEXP NHMM_rcpp_getymiss(SEXP famSEXP, SEXP KSEXP, SEXP zSEXP, SEXP pppSEXP, SEXP theta1SEXP, SEXP theta2SEXP, SEXP mixesSEXP, SEXP deltSEXP, SEXP JSEXP) {
+RcppExport SEXP _NHMM_rcpp_getymiss(SEXP famSEXP, SEXP KSEXP, SEXP zSEXP, SEXP pppSEXP, SEXP theta1SEXP, SEXP theta2SEXP, SEXP mixesSEXP, SEXP deltSEXP, SEXP JSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -284,7 +284,7 @@ END_RCPP
 }
 // rcpp_getz
 void rcpp_getz(Rcpp::NumericVector zf, Rcpp::NumericVector QQf, Rcpp::NumericMatrix denzity, Rcpp::NumericVector subseqy);
-RcppExport SEXP NHMM_rcpp_getz(SEXP zfSEXP, SEXP QQfSEXP, SEXP denzitySEXP, SEXP subseqySEXP) {
+RcppExport SEXP _NHMM_rcpp_getz(SEXP zfSEXP, SEXP QQfSEXP, SEXP denzitySEXP, SEXP subseqySEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< Rcpp::NumericVector >::type zf(zfSEXP);
@@ -297,7 +297,7 @@ END_RCPP
 }
 // rcpp_pnorm
 double rcpp_pnorm(double a);
-RcppExport SEXP NHMM_rcpp_pnorm(SEXP aSEXP) {
+RcppExport SEXP _NHMM_rcpp_pnorm(SEXP aSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -308,7 +308,7 @@ END_RCPP
 }
 // rcpp_prod
 double rcpp_prod(Rcpp::NumericVector A);
-RcppExport SEXP NHMM_rcpp_prod(SEXP ASEXP) {
+RcppExport SEXP _NHMM_rcpp_prod(SEXP ASEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -319,7 +319,7 @@ END_RCPP
 }
 // rcpp_rdirichlet
 Rcpp::NumericVector rcpp_rdirichlet(Rcpp::NumericVector B);
-RcppExport SEXP NHMM_rcpp_rdirichlet(SEXP BSEXP) {
+RcppExport SEXP _NHMM_rcpp_rdirichlet(SEXP BSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -330,7 +330,7 @@ END_RCPP
 }
 // rcpp_dmix0
 Rcpp::NumericVector rcpp_dmix0(int fam, double y, Rcpp::NumericVector ppp, Rcpp::NumericVector par1, Rcpp::NumericVector par2);
-RcppExport SEXP NHMM_rcpp_dmix0(SEXP famSEXP, SEXP ySEXP, SEXP pppSEXP, SEXP par1SEXP, SEXP par2SEXP) {
+RcppExport SEXP _NHMM_rcpp_dmix0(SEXP famSEXP, SEXP ySEXP, SEXP pppSEXP, SEXP par1SEXP, SEXP par2SEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -345,7 +345,7 @@ END_RCPP
 }
 // rcpp_rmix0
 double rcpp_rmix0(int fam, Rcpp::NumericVector ppp, Rcpp::NumericVector par1, Rcpp::NumericVector par2);
-RcppExport SEXP NHMM_rcpp_rmix0(SEXP famSEXP, SEXP pppSEXP, SEXP par1SEXP, SEXP par2SEXP) {
+RcppExport SEXP _NHMM_rcpp_rmix0(SEXP famSEXP, SEXP pppSEXP, SEXP par1SEXP, SEXP par2SEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -359,7 +359,7 @@ END_RCPP
 }
 // rcpp_dmix
 Rcpp::NumericVector rcpp_dmix(int fam, double y, Rcpp::NumericVector ppp, Rcpp::NumericVector par1, Rcpp::NumericVector par2);
-RcppExport SEXP NHMM_rcpp_dmix(SEXP famSEXP, SEXP ySEXP, SEXP pppSEXP, SEXP par1SEXP, SEXP par2SEXP) {
+RcppExport SEXP _NHMM_rcpp_dmix(SEXP famSEXP, SEXP ySEXP, SEXP pppSEXP, SEXP par1SEXP, SEXP par2SEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -374,7 +374,7 @@ END_RCPP
 }
 // rcpp_rmix
 double rcpp_rmix(int fam, Rcpp::NumericVector ppp, Rcpp::NumericVector par1, Rcpp::NumericVector par2);
-RcppExport SEXP NHMM_rcpp_rmix(SEXP famSEXP, SEXP pppSEXP, SEXP par1SEXP, SEXP par2SEXP) {
+RcppExport SEXP _NHMM_rcpp_rmix(SEXP famSEXP, SEXP pppSEXP, SEXP par1SEXP, SEXP par2SEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -388,7 +388,7 @@ END_RCPP
 }
 // rcpp_resetX
 Rcpp::NumericMatrix rcpp_resetX(Rcpp::NumericMatrix XXf, Rcpp::NumericMatrix zbinf);
-RcppExport SEXP NHMM_rcpp_resetX(SEXP XXfSEXP, SEXP zbinfSEXP) {
+RcppExport SEXP _NHMM_rcpp_resetX(SEXP XXfSEXP, SEXP zbinfSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -400,7 +400,7 @@ END_RCPP
 }
 // rcpp_rgamma
 double rcpp_rgamma(int a, double b, double c);
-RcppExport SEXP NHMM_rcpp_rgamma(SEXP aSEXP, SEXP bSEXP, SEXP cSEXP) {
+RcppExport SEXP _NHMM_rcpp_rgamma(SEXP aSEXP, SEXP bSEXP, SEXP cSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -413,7 +413,7 @@ END_RCPP
 }
 // rcpp_rmultinom
 int rcpp_rmultinom(Rcpp::NumericVector probs);
-RcppExport SEXP NHMM_rcpp_rmultinom(SEXP probsSEXP) {
+RcppExport SEXP _NHMM_rcpp_rmultinom(SEXP probsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -424,7 +424,7 @@ END_RCPP
 }
 // rcpp_rnorm
 double rcpp_rnorm(int a, double b, double c);
-RcppExport SEXP NHMM_rcpp_rnorm(SEXP aSEXP, SEXP bSEXP, SEXP cSEXP) {
+RcppExport SEXP _NHMM_rcpp_rnorm(SEXP aSEXP, SEXP bSEXP, SEXP cSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -437,7 +437,7 @@ END_RCPP
 }
 // rcpp_rpois
 double rcpp_rpois(int a, double b);
-RcppExport SEXP NHMM_rcpp_rpois(SEXP aSEXP, SEXP bSEXP) {
+RcppExport SEXP _NHMM_rcpp_rpois(SEXP aSEXP, SEXP bSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -449,7 +449,7 @@ END_RCPP
 }
 // rcpp_summ
 double rcpp_summ(Rcpp::NumericMatrix A);
-RcppExport SEXP NHMM_rcpp_summ(SEXP ASEXP) {
+RcppExport SEXP _NHMM_rcpp_summ(SEXP ASEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -460,7 +460,7 @@ END_RCPP
 }
 // rcpp_sumv
 double rcpp_sumv(Rcpp::NumericVector A);
-RcppExport SEXP NHMM_rcpp_sumv(SEXP ASEXP) {
+RcppExport SEXP _NHMM_rcpp_sumv(SEXP ASEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -468,4 +468,46 @@ BEGIN_RCPP
     rcpp_result_gen = Rcpp::wrap(rcpp_sumv(A));
     return rcpp_result_gen;
 END_RCPP
+}
+
+static const R_CallMethodDef CallEntries[] = {
+    {"_NHMM_Crtnorm", (DL_FUNC) &_NHMM_Crtnorm, 7},
+    {"_NHMM_rcpp_3d", (DL_FUNC) &_NHMM_rcpp_3d, 6},
+    {"_NHMM_rcpp_arraytomat", (DL_FUNC) &_NHMM_rcpp_arraytomat, 5},
+    {"_NHMM_rcpp_dgamma", (DL_FUNC) &_NHMM_rcpp_dgamma, 3},
+    {"_NHMM_rcpp_dmvnorm", (DL_FUNC) &_NHMM_rcpp_dmvnorm, 4},
+    {"_NHMM_rcpp_dnorm", (DL_FUNC) &_NHMM_rcpp_dnorm, 3},
+    {"_NHMM_rcpp_dot", (DL_FUNC) &_NHMM_rcpp_dot, 2},
+    {"_NHMM_rcpp_dpois", (DL_FUNC) &_NHMM_rcpp_dpois, 2},
+    {"_NHMM_rcpp_getNQQ", (DL_FUNC) &_NHMM_rcpp_getNQQ, 2},
+    {"_NHMM_rcpp_getQQ", (DL_FUNC) &_NHMM_rcpp_getQQ, 4},
+    {"_NHMM_rcpp_getWbin", (DL_FUNC) &_NHMM_rcpp_getWbin, 3},
+    {"_NHMM_rcpp_getdenzity", (DL_FUNC) &_NHMM_rcpp_getdenzity, 12},
+    {"_NHMM_rcpp_getdenzityMVN", (DL_FUNC) &_NHMM_rcpp_getdenzityMVN, 7},
+    {"_NHMM_rcpp_getppp", (DL_FUNC) &_NHMM_rcpp_getppp, 2},
+    {"_NHMM_rcpp_getsumz1", (DL_FUNC) &_NHMM_rcpp_getsumz1, 6},
+    {"_NHMM_rcpp_getsumz2", (DL_FUNC) &_NHMM_rcpp_getsumz2, 11},
+    {"_NHMM_rcpp_getvvv", (DL_FUNC) &_NHMM_rcpp_getvvv, 9},
+    {"_NHMM_rcpp_getymiss", (DL_FUNC) &_NHMM_rcpp_getymiss, 9},
+    {"_NHMM_rcpp_getz", (DL_FUNC) &_NHMM_rcpp_getz, 4},
+    {"_NHMM_rcpp_pnorm", (DL_FUNC) &_NHMM_rcpp_pnorm, 1},
+    {"_NHMM_rcpp_prod", (DL_FUNC) &_NHMM_rcpp_prod, 1},
+    {"_NHMM_rcpp_rdirichlet", (DL_FUNC) &_NHMM_rcpp_rdirichlet, 1},
+    {"_NHMM_rcpp_dmix0", (DL_FUNC) &_NHMM_rcpp_dmix0, 5},
+    {"_NHMM_rcpp_rmix0", (DL_FUNC) &_NHMM_rcpp_rmix0, 4},
+    {"_NHMM_rcpp_dmix", (DL_FUNC) &_NHMM_rcpp_dmix, 5},
+    {"_NHMM_rcpp_rmix", (DL_FUNC) &_NHMM_rcpp_rmix, 4},
+    {"_NHMM_rcpp_resetX", (DL_FUNC) &_NHMM_rcpp_resetX, 2},
+    {"_NHMM_rcpp_rgamma", (DL_FUNC) &_NHMM_rcpp_rgamma, 3},
+    {"_NHMM_rcpp_rmultinom", (DL_FUNC) &_NHMM_rcpp_rmultinom, 1},
+    {"_NHMM_rcpp_rnorm", (DL_FUNC) &_NHMM_rcpp_rnorm, 3},
+    {"_NHMM_rcpp_rpois", (DL_FUNC) &_NHMM_rcpp_rpois, 2},
+    {"_NHMM_rcpp_summ", (DL_FUNC) &_NHMM_rcpp_summ, 1},
+    {"_NHMM_rcpp_sumv", (DL_FUNC) &_NHMM_rcpp_sumv, 1},
+    {NULL, NULL, 0}
+};
+
+RcppExport void R_init_NHMM(DllInfo *dll) {
+    R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
+    R_useDynamicSymbols(dll, FALSE);
 }

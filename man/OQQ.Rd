@@ -26,6 +26,3 @@ t transition. If the columns are the same then the Markov property is probably w
 \examples{
 #OQQ(my.nhmm) 
 }
-\keyword{probabilities}
-\keyword{transition}
-

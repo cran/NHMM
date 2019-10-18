@@ -2,134 +2,134 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 Crtnorm <- function(a, muf, sigf, lowf, upf, boolowf, booupf) {
-    .Call('NHMM_Crtnorm', PACKAGE = 'NHMM', a, muf, sigf, lowf, upf, boolowf, booupf)
+    .Call(`_NHMM_Crtnorm`, a, muf, sigf, lowf, upf, boolowf, booupf)
 }
 
 rcpp_3d <- function(jf, kf, lf, Jf, Kf, Lf) {
-    .Call('NHMM_rcpp_3d', PACKAGE = 'NHMM', jf, kf, lf, Jf, Kf, Lf)
+    .Call(`_NHMM_rcpp_3d`, jf, kf, lf, Jf, Kf, Lf)
 }
 
 rcpp_arraytomat <- function(arr3d, c, A, B, C) {
-    .Call('NHMM_rcpp_arraytomat', PACKAGE = 'NHMM', arr3d, c, A, B, C)
+    .Call(`_NHMM_rcpp_arraytomat`, arr3d, c, A, B, C)
 }
 
 rcpp_dgamma <- function(a, b, c) {
-    .Call('NHMM_rcpp_dgamma', PACKAGE = 'NHMM', a, b, c)
+    .Call(`_NHMM_rcpp_dgamma`, a, b, c)
 }
 
 rcpp_dmvnorm <- function(dataf, meanf, Siginvf, detf) {
-    .Call('NHMM_rcpp_dmvnorm', PACKAGE = 'NHMM', dataf, meanf, Siginvf, detf)
+    .Call(`_NHMM_rcpp_dmvnorm`, dataf, meanf, Siginvf, detf)
 }
 
 rcpp_dnorm <- function(a, b, c) {
-    .Call('NHMM_rcpp_dnorm', PACKAGE = 'NHMM', a, b, c)
+    .Call(`_NHMM_rcpp_dnorm`, a, b, c)
 }
 
 rcpp_dot <- function(c, d) {
-    .Call('NHMM_rcpp_dot', PACKAGE = 'NHMM', c, d)
+    .Call(`_NHMM_rcpp_dot`, c, d)
 }
 
 rcpp_dpois <- function(a, b) {
-    .Call('NHMM_rcpp_dpois', PACKAGE = 'NHMM', a, b)
-}
-
-rcpp_getdenzity <- function(A, Wbin, psi, gamy, fam, K, mixes, delt, y, ppp, theta1, theta2) {
-    .Call('NHMM_rcpp_getdenzity', PACKAGE = 'NHMM', A, Wbin, psi, gamy, fam, K, mixes, delt, y, ppp, theta1, theta2)
-}
-
-rcpp_getdenzityMVN <- function(A, Wbin, psi, K, y, thetainv, detS) {
-    .Call('NHMM_rcpp_getdenzityMVN', PACKAGE = 'NHMM', A, Wbin, psi, K, y, thetainv, detS)
+    .Call(`_NHMM_rcpp_dpois`, a, b)
 }
 
 rcpp_getNQQ <- function(beta, XX) {
-    .Call('NHMM_rcpp_getNQQ', PACKAGE = 'NHMM', beta, XX)
-}
-
-rcpp_getppp <- function(gamy, mus) {
-    .Call('NHMM_rcpp_getppp', PACKAGE = 'NHMM', gamy, mus)
+    .Call(`_NHMM_rcpp_getNQQ`, beta, XX)
 }
 
 rcpp_getQQ <- function(K, z, dirprior, subseqy) {
-    .Call('NHMM_rcpp_getQQ', PACKAGE = 'NHMM', K, z, dirprior, subseqy)
-}
-
-rcpp_getsumz1 <- function(Kf, Jf, Tf, zf, Sigmainvf, in2f) {
-    .Call('NHMM_rcpp_getsumz1', PACKAGE = 'NHMM', Kf, Jf, Tf, zf, Sigmainvf, in2f)
-}
-
-rcpp_getsumz2 <- function(llf, LLf, Kf, Jf, Tf, zf, Sigmainvf, in2f, yf, betaemf, betaem0f) {
-    .Call('NHMM_rcpp_getsumz2', PACKAGE = 'NHMM', llf, LLf, Kf, Jf, Tf, zf, Sigmainvf, in2f, yf, betaemf, betaem0f)
-}
-
-rcpp_getvvv <- function(fam, K, mixes, delt, y, ppp, theta1, theta2, z) {
-    .Call('NHMM_rcpp_getvvv', PACKAGE = 'NHMM', fam, K, mixes, delt, y, ppp, theta1, theta2, z)
+    .Call(`_NHMM_rcpp_getQQ`, K, z, dirprior, subseqy)
 }
 
 rcpp_getWbin <- function(z, K, J) {
-    .Call('NHMM_rcpp_getWbin', PACKAGE = 'NHMM', z, K, J)
+    .Call(`_NHMM_rcpp_getWbin`, z, K, J)
+}
+
+rcpp_getdenzity <- function(A, Wbin, psi, gamy, fam, K, mixes, delt, y, ppp, theta1, theta2) {
+    .Call(`_NHMM_rcpp_getdenzity`, A, Wbin, psi, gamy, fam, K, mixes, delt, y, ppp, theta1, theta2)
+}
+
+rcpp_getdenzityMVN <- function(A, Wbin, psi, K, y, thetainv, detS) {
+    .Call(`_NHMM_rcpp_getdenzityMVN`, A, Wbin, psi, K, y, thetainv, detS)
+}
+
+rcpp_getppp <- function(gamy, mus) {
+    .Call(`_NHMM_rcpp_getppp`, gamy, mus)
+}
+
+rcpp_getsumz1 <- function(Kf, Jf, Tf, zf, Sigmainvf, in2f) {
+    .Call(`_NHMM_rcpp_getsumz1`, Kf, Jf, Tf, zf, Sigmainvf, in2f)
+}
+
+rcpp_getsumz2 <- function(llf, LLf, Kf, Jf, Tf, zf, Sigmainvf, in2f, yf, betaemf, betaem0f) {
+    .Call(`_NHMM_rcpp_getsumz2`, llf, LLf, Kf, Jf, Tf, zf, Sigmainvf, in2f, yf, betaemf, betaem0f)
+}
+
+rcpp_getvvv <- function(fam, K, mixes, delt, y, ppp, theta1, theta2, z) {
+    .Call(`_NHMM_rcpp_getvvv`, fam, K, mixes, delt, y, ppp, theta1, theta2, z)
 }
 
 rcpp_getymiss <- function(fam, K, z, ppp, theta1, theta2, mixes, delt, J) {
-    .Call('NHMM_rcpp_getymiss', PACKAGE = 'NHMM', fam, K, z, ppp, theta1, theta2, mixes, delt, J)
+    .Call(`_NHMM_rcpp_getymiss`, fam, K, z, ppp, theta1, theta2, mixes, delt, J)
 }
 
 rcpp_getz <- function(zf, QQf, denzity, subseqy) {
-    invisible(.Call('NHMM_rcpp_getz', PACKAGE = 'NHMM', zf, QQf, denzity, subseqy))
+    invisible(.Call(`_NHMM_rcpp_getz`, zf, QQf, denzity, subseqy))
 }
 
 rcpp_pnorm <- function(a) {
-    .Call('NHMM_rcpp_pnorm', PACKAGE = 'NHMM', a)
+    .Call(`_NHMM_rcpp_pnorm`, a)
 }
 
 rcpp_prod <- function(A) {
-    .Call('NHMM_rcpp_prod', PACKAGE = 'NHMM', A)
+    .Call(`_NHMM_rcpp_prod`, A)
 }
 
 rcpp_rdirichlet <- function(B) {
-    .Call('NHMM_rcpp_rdirichlet', PACKAGE = 'NHMM', B)
+    .Call(`_NHMM_rcpp_rdirichlet`, B)
 }
 
 rcpp_dmix0 <- function(fam, y, ppp, par1, par2) {
-    .Call('NHMM_rcpp_dmix0', PACKAGE = 'NHMM', fam, y, ppp, par1, par2)
+    .Call(`_NHMM_rcpp_dmix0`, fam, y, ppp, par1, par2)
 }
 
 rcpp_rmix0 <- function(fam, ppp, par1, par2) {
-    .Call('NHMM_rcpp_rmix0', PACKAGE = 'NHMM', fam, ppp, par1, par2)
+    .Call(`_NHMM_rcpp_rmix0`, fam, ppp, par1, par2)
 }
 
 rcpp_dmix <- function(fam, y, ppp, par1, par2) {
-    .Call('NHMM_rcpp_dmix', PACKAGE = 'NHMM', fam, y, ppp, par1, par2)
+    .Call(`_NHMM_rcpp_dmix`, fam, y, ppp, par1, par2)
 }
 
 rcpp_rmix <- function(fam, ppp, par1, par2) {
-    .Call('NHMM_rcpp_rmix', PACKAGE = 'NHMM', fam, ppp, par1, par2)
+    .Call(`_NHMM_rcpp_rmix`, fam, ppp, par1, par2)
 }
 
 rcpp_resetX <- function(XXf, zbinf) {
-    .Call('NHMM_rcpp_resetX', PACKAGE = 'NHMM', XXf, zbinf)
+    .Call(`_NHMM_rcpp_resetX`, XXf, zbinf)
 }
 
 rcpp_rgamma <- function(a, b, c) {
-    .Call('NHMM_rcpp_rgamma', PACKAGE = 'NHMM', a, b, c)
+    .Call(`_NHMM_rcpp_rgamma`, a, b, c)
 }
 
 rcpp_rmultinom <- function(probs) {
-    .Call('NHMM_rcpp_rmultinom', PACKAGE = 'NHMM', probs)
+    .Call(`_NHMM_rcpp_rmultinom`, probs)
 }
 
 rcpp_rnorm <- function(a, b, c) {
-    .Call('NHMM_rcpp_rnorm', PACKAGE = 'NHMM', a, b, c)
+    .Call(`_NHMM_rcpp_rnorm`, a, b, c)
 }
 
 rcpp_rpois <- function(a, b) {
-    .Call('NHMM_rcpp_rpois', PACKAGE = 'NHMM', a, b)
+    .Call(`_NHMM_rcpp_rpois`, a, b)
 }
 
 rcpp_summ <- function(A) {
-    .Call('NHMM_rcpp_summ', PACKAGE = 'NHMM', A)
+    .Call(`_NHMM_rcpp_summ`, A)
 }
 
 rcpp_sumv <- function(A) {
-    .Call('NHMM_rcpp_sumv', PACKAGE = 'NHMM', A)
+    .Call(`_NHMM_rcpp_sumv`, A)
 }
 

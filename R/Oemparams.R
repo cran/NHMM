@@ -41,8 +41,6 @@
 #' where outboo is a parameter from NHMM which determines if output was written to a file (TRUE) or to a variable (FALSE). 
 #' Exception: NHMM_MVN object does not plot the covariance.
 #'
-#' @export
-#' @keywords emission parameters
 #' @examples 
 #' #thetas=Oemparams(my.nhmm, FALSE); 
 #' #thetas[,,,,3]  #mean values

@@ -16,6 +16,9 @@
 #############################################################
 ### Normal
 
+## line 35 updated in v3.9
+# v3.9 n>0 now n>1  need at least two pieces of data to estimate parameters
+
 
 RgetNormaltheta=function(y,z, priors, theta, nmix, vvv,delt)  
 {  
@@ -32,7 +35,7 @@ RgetNormaltheta=function(y,z, priors, theta, nmix, vvv,delt)
           for(k in 1:K)
           {   for(j in 1:J)
               {  n=sum(z==k & vvv[,j]==(v-1+delt))
-                 if(n > 0) #ensure there is data in this state, if not skip
+                 if(n > 2) #v3.9 n>0 now n>1  #ensure there is data in this state, if not skip
                  {  theta[2,v,k,j]=1/rgamma(1,n/2+a.sig[k,j], 1/2*sum((y[z==k & vvv[,j]==(v-1+delt),j]-theta[1,v,k,j])^2)+b.sig[k,j])
                     ss=1/(n/theta[2,v,k,j]+b.mu[k,j])
                     theta[1,v,k,j]=rnorm(1,(sum(y[z==k & vvv[,j]==(v-1+delt),j]/theta[2,v,k,j]+a.mu[k,j]*b.mu[k,j]))*ss,sd=sqrt(ss))

@@ -62,5 +62,15 @@ Cgetz=function( z, QQ, denzity, subseqy)
     }
     z[t]=rcpp_rmultinom(pro) 
 
+    
+    ### add in v3.9  
+    ### ensure at least 3 data points per state
+    for(k in 1:K)
+    {  if(sum(z==k) < 4)
+       {  z[floor(runif(4,1,T))]=k #pick 4 random points and force them into the empty z state
+       }
+    }
+    
+    
     z
 }

@@ -33,7 +33,7 @@ RgetPoissontheta=function(y,z, priors, theta, nmix, vvv,delt)
          for(k in 1:K)
          {  for(j in 1:J)
             {  n=sum(z==k & vvv[,j]==(v-1+delt))
-               if(n > 0) #ensure there is data in this state, if not skip
+               if(n > 2) #ensure there is data in this state, if not skip
                {      theta[1,v,k,j]=rgamma(1, a.AA[k,j]+sum((y[,j])[z==k & vvv[,j]==(v-1+delt)]), b.AA[k,j]+n)
                       theta[2,v,k,j]=NA
                }

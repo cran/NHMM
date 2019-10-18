@@ -5,10 +5,10 @@
 \title{Bayesian Homogeneous Markov Model (NHMM)}
 \usage{
 HMM(y, subseq = NULL, dirprior = NULL, K = 2, iters = 1000,
-  burnin = 200, emdist = "normal", nmix = 1, delta = FALSE, W = NULL,
-  psipriorm = NULL, psipriorp = NULL, priors = NULL, outdir = NULL,
-  ymiss = FALSE, yrep = 0, ypred = 0, Wp = NULL, pT = NULL,
-  yhold = NULL)
+  burnin = 200, emdist = "normal", nmix = 1, delta = FALSE,
+  W = NULL, psipriorm = NULL, psipriorp = NULL, priors = NULL,
+  outdir = NULL, ymiss = FALSE, yrep = 0, ypred = 0, Wp = NULL,
+  pT = NULL, yhold = NULL)
 }
 \arguments{
 \item{y}{T by J matrix of data (J=1 is sufficient)
@@ -172,6 +172,3 @@ tt=Oemparams(my.hmm1,FALSE)
  # run it with K=3 and then K=1 and compare using both BIC and PLS
  }
 }
-\keyword{Bayesian}
-\keyword{HMM}
-

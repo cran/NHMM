@@ -98,8 +98,6 @@
 #'           PLS is the average PLS across sequences.      
 #'
 #' @return my.nhmm object  
-#' @export
-#' @keywords Bayesian NHMM
 #' @examples ## Multivariate Normal data
 #' \dontrun{ 
 #' data(NHMMdata)

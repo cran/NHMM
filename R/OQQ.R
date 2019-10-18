@@ -29,8 +29,6 @@
 #' @return output: a plot where each row is the state at time t-1 and the columns are time t. 
 #' The GUI plot shows the transition probability over time for each t-1 to 
 #' t transition. If the columns are the same then the Markov property is probably weak.
-#' @export
-#' @keywords transition probabilities
 #' @examples #OQQ(my.nhmm) 
 
 

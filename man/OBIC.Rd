@@ -34,8 +34,3 @@ the PLS is in the unit of t (usually days).
 \examples{
 #OBIC(my.nhmm) 
 }
-\keyword{AIC}
-\keyword{BIC}
-\keyword{PLS}
-\keyword{log-likelihood}
-

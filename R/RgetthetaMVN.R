@@ -17,6 +17,8 @@
 ### MVN
 ### iwish is in MCMCpack
 
+### line 30 added to ensure there is data in state k
+
 RgetthetaMVN=function(y,z, priors1, priors2, theta, mus)  
 {  
     K=dim(theta)[3]   #J,J,K
@@ -27,12 +29,14 @@ RgetthetaMVN=function(y,z, priors1, priors2, theta, mus)
     for(k in 1:K)
     {   these=which(z==k)
         vv=length(these)
-        sumy=matrix(0,J,J)
+      if(vv>2)           #added this in v3.9 
+      {  sumy=matrix(0,J,J)
         for(tt in these)
         {   then=y[tt,]-mus[tt,] # w  ATJ
             sumy=sumy+then%*%t(then)
         }
         theta[,,k]=riwish(vv+priors1[k],sumy+priors2[,,k])   #2J df and 40*diag(J) are the IW prior for stability
+      }
     }
      
       theta

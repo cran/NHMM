@@ -116,8 +116,6 @@
 #'           PLS is the average PLS across sequences. 
 #'            
 #' @return my.hmm object  
-#' @export
-#' @keywords Bayesian HMM
 #' @examples ## Gamma or Exponential
 #' ### because we do not supply "priors" as an input it fits an Exponetial distribution
 #'   \dontrun{
@@ -186,6 +184,7 @@
 ###   		
 ### # 
 ######################################################################################
+
 
 HMM=function(y, subseq=NULL, dirprior=NULL , K=2, iters=1000, burnin=200, emdist="normal", nmix=1, delta=FALSE, W=NULL, psipriorm=NULL,psipriorp=NULL, priors=NULL, outdir=NULL, ymiss=FALSE, yrep=0 ,ypred=0, Wp=NULL, pT=NULL, yhold=NULL)
 {  

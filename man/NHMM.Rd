@@ -4,11 +4,12 @@
 \alias{NHMM}
 \title{Bayesian Non-homogeneous Markov Model (NHMM)}
 \usage{
-NHMM(y, subseq = NULL, X = NULL, betapriorm = NULL, betapriorp = NULL,
-  K = 2, iters = 1000, burnin = 200, emdist = "normal", nmix = 1,
-  delta = FALSE, W = NULL, psipriorm = NULL, psipriorp = NULL,
-  priors = NULL, outdir = NULL, ymiss = FALSE, yrep = 0, ypred = 0,
-  Xp = NULL, Wp = NULL, yhold = NULL)
+NHMM(y, subseq = NULL, X = NULL, betapriorm = NULL,
+  betapriorp = NULL, K = 2, iters = 1000, burnin = 200,
+  emdist = "normal", nmix = 1, delta = FALSE, W = NULL,
+  psipriorm = NULL, psipriorp = NULL, priors = NULL, outdir = NULL,
+  ymiss = FALSE, yrep = 0, ypred = 0, Xp = NULL, Wp = NULL,
+  yhold = NULL)
 }
 \arguments{
 \item{y}{T by J matrix of data (J=1 is sufficient)
@@ -194,6 +195,3 @@ tt=Oemparams(my.nhmm,FALSE)
  #compare K=1 and K=3
  }
 }
-\keyword{Bayesian}
-\keyword{NHMM}
-

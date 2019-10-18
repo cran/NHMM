@@ -36,8 +36,6 @@
 #' @return output: outputs statements of 90% and 95% significance of the intercept coefficients 
 #' and each X input coefficients (if any of the J coefficients for a variable are significant then that
 #' variable is deemed signficant.)
-#' @export
-#' @keywords coefficients
 #' @examples #thetas=OWcoef(my.nhmm, FALSE); 
 #' #thetas[,,,,3]  #mean values
 
@@ -47,13 +45,13 @@ OWcoef=function(nhmmobj, plots=FALSE, outfile=NULL)
 {   T=nhmmobj$T
     J=nhmmobj$J
     K=nhmmobj$K
-    B=nhmmobj$B
+    B=nhmmobj$B   #wrong for hmm
     A=nhmmobj$A
     iters=nhmmobj$iters
     burnin=nhmmobj$burnin 
     outboo=nhmmobj$outboo
     outdir=nhmmobj$outdir
-    L=B+K
+    L=K+B  #hmm should be B=1
     
     if(iters<40){stop("Must have at least 40 iterations to get any results")}
     
@@ -180,16 +178,16 @@ OWcoef=function(nhmmobj, plots=FALSE, outfile=NULL)
        truthsL4=apply(signif4,2,sum) 
        for(k in 1:A)
        {  if(truthsL[k]>0)
-          {  print(paste(k,". X is significant with 95% probability",sep=""))
+          {  print(paste(k,". W is significant with 95% probability",sep=""))
           }else{
-            print(paste(k,". X is not significant with 95% probability",sep=""))
+            print(paste(k,". W is not significant with 95% probability",sep=""))
           }
        }
        for(k in 1:(L-K))
        {  if(truthsL4[k]>0) 
-          {  print(paste(k,". X is significant with 90% probability",sep=""))
+          {  print(paste(k,". W is significant with 90% probability",sep=""))
           }else{
-             print(paste(k,". X is not significant with 90% probability",sep=""))
+             print(paste(k,". W is not significant with 90% probability",sep=""))
           }
        }
     }
