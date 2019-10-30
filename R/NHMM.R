@@ -1,7 +1,8 @@
 #v3.9 change is RgetNormaltheta.R and RgetGammatheta.R, RgetthetaMVN.R, RgetPoissontheta.R
 # minimum of 3 points needed, could even set n>5 or 10 if it helps. need minimal data to draw theta and beta parameters.
 
-# Added n>2 data points needed in a state to Rgetbeta.R
+# v3.9 Added n>2 data points needed in a state to Rgetbeta.R
+# v3.10 bug in the n>2 lines
 
 #v3.9 Cgetz.R added a portion to assign 4 data points at random to empty (or near empty) state to restart it
 
@@ -11,7 +12,7 @@
 #only force low values to zero if there is a point mass at zero (delt==1)
 #added the < -0.1 to have point mass work with Normal distribution
 
-
+#v3.10 NHMMmain lines 46 and 49 fam==1 and fam==2 swapped
 
 ################################################################
 ## Copyright 2014 Tracy Holsclaw.
@@ -222,7 +223,7 @@
 ######################################################################################
 
 # subseq=NULL; betapriorm=NULL; betapriorp=NULL;  iters=100; burnin=10; nmix=2; delta=FALSE; W=NULL; psipriorm=NULL; psipriorp=NULL; priors=NULL; outdir=NULL; ymiss=FALSE; yrep=0 ;ypred=0; Xp=NULL; Wp=NULL; yhold=NULL
-#y=yt; X=X1t; W=W1t; K=4; iters=100; burnin=50; priors=prior1; emdist="normal"; nmix=2; delta=TRUE
+# y=ynormal; X=tX; W=tW; K=4; iters=100; burnin=50; priors=NULL; emdist="normal"; nmix=2; delta=TRUE
 
 
 NHMM=function(y, subseq=NULL, X=NULL, betapriorm=NULL, betapriorp=NULL, K=2, iters=1000, burnin=200, emdist="normal", nmix=1, delta=FALSE, W=NULL, psipriorm=NULL,psipriorp=NULL, priors=NULL, outdir=NULL, ymiss=FALSE, yrep=0 ,ypred=0, Xp=NULL, Wp=NULL, yhold=NULL)

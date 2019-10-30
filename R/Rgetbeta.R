@@ -30,7 +30,7 @@ Rgetbeta=function( zbin,beta,XX, betapriorm, betapriorp)
   if(!is.element(0,apply(zbin,2,sum)))  ### all z's are used
   {
       for(k in 1:(K-1))  #1:(K-1) without any skipped z
-      {  if(sum(zbin[,k]>2)) 
+      {  if(sum(zbin[,k])>2) 
          {
         C[,k]=log(apply(exp(beta[-k,]%*% t(XX)),2,sum))  #hold one row of beta out at a time
          wij=diag(T)*rpg(T,1,t(beta[k,]%*%t(XX))-C[,k])   #library
@@ -57,7 +57,7 @@ Rgetbeta=function( zbin,beta,XX, betapriorm, betapriorp)
      C2=matrix(0,T,K2)
      
      for(k in 1:(K2-1))  #1:(K-1) without any skipped z
-     {  if(sum(zbin[,k]>2))
+     {  if(sum(zbin[,k])>2)
         {
         C2[,k]=log(apply(exp(beta2[-k,]%*% t(XX2)),2,sum))  #hold one row of beta out at a time
         wij=diag(T)*rpg(T,1,t(beta2[k,]%*%t(XX2))-C2[,k])   #library
