@@ -175,7 +175,7 @@ for(q in 1:Q)
            #QQ=array(rcpp_getQQ(K, z, dirprior,  subseqy) ,dim=c(K,K,T))
     if(theK>1){QQ=array(rcpp_getNQQ(beta, XX),dim=c(K,K,T))}
                 
-    denzity=array(rcpp_getdenzity(A, c(Wbin), psi, gamy, fam, K, mixes, delt, y,c(ppp), c(theta[1,,,]),  c(theta[2,,,])) ,dim=c(K,T,J))
+    denzity=array(rcpp_getdenzity(A, c(Wbin), psi, gamy, fam, K, mixes, delt, y,c(ppp), c(theta[1,,,]),  c(theta[2,,,])) ,dim=c(K,T,J))  #dim K,T,J
           
           z=Cgetz( z, QQ, denzity, subseqy) #slow 
     #rcpp_getz( z, c(QQ), denzity, subseqy)  #BROKEN 

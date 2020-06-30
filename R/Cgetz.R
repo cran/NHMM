@@ -19,6 +19,7 @@
 Cgetz=function( z, QQ, denzity, subseqy)   
 {   T=dim(denzity)[2]
     K=dim(denzity)[1]
+    J=dim(denzity)[3]  #v3.11
     pro=numeric(K)
     qs=matrix(0,K,T)
     
@@ -26,7 +27,8 @@ Cgetz=function( z, QQ, denzity, subseqy)
     qs[,1]=QQ[,z[1+1],1+1]  #t=1
     denzity1=matrix(0,K,T)
     for(k in 1:K)
-    {  denzity1[k,]=apply(denzity[k,,],1,prod)
+    {  if(J != 1){ denzity1[k,]=apply(denzity[k,,],1,prod) }
+        if(J == 1){ denzity1[k,]=denzity[k,,1] }   #v3.11
     }  
        
     pro=denzity1[,t]*qs[,t]                #probabilities

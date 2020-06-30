@@ -1,3 +1,5 @@
+#3.11 change in Cgetz.R,  J=1 case was failing. Added  J=dim(denzity)[3] and an if/else to take care of the J=1 case.
+
 #v3.9 change is RgetNormaltheta.R and RgetGammatheta.R, RgetthetaMVN.R, RgetPoissontheta.R
 # minimum of 3 points needed, could even set n>5 or 10 if it helps. need minimal data to draw theta and beta parameters.
 
@@ -189,6 +191,10 @@
 #'                 burnin=10, emdist="gamma", nmix=2, delta=TRUE)
 #'  
 #'  
+#'  ## One dimensional y vector case (J=1)
+#'  #my.nhmm=NHMM(y=matrix(ygamma[1:200,1],200,1),  X=matrix(tX[,1:200],1,200),
+#'  #K=3, iters=40, burnin=2, emdist="gamma", nmix=3, delta=TRUE)
+#'  
 #'  ### Compare my.nhmm6 (K=3) and my.nhmm7 (K=1) using both BIC 
 #'  ###     and PLS (yhold is the last 10% of the data)
 #'  #ygamma2=ygamma
@@ -225,6 +231,7 @@
 # subseq=NULL; betapriorm=NULL; betapriorp=NULL;  iters=100; burnin=10; nmix=2; delta=FALSE; W=NULL; psipriorm=NULL; psipriorp=NULL; priors=NULL; outdir=NULL; ymiss=FALSE; yrep=0 ;ypred=0; Xp=NULL; Wp=NULL; yhold=NULL
 # y=ynormal; X=tX; W=tW; K=4; iters=100; burnin=50; priors=NULL; emdist="normal"; nmix=2; delta=TRUE
 
+#y=matrix(ygamma[1:200,1],200,1); X=matrix(tX[,1:200],1,200); W=NULL; K=3; iters=40; emdist="gamma"; delta=TRUE; burnin=2
 
 NHMM=function(y, subseq=NULL, X=NULL, betapriorm=NULL, betapriorp=NULL, K=2, iters=1000, burnin=200, emdist="normal", nmix=1, delta=FALSE, W=NULL, psipriorm=NULL,psipriorp=NULL, priors=NULL, outdir=NULL, ymiss=FALSE, yrep=0 ,ypred=0, Xp=NULL, Wp=NULL, yhold=NULL)
 {  

@@ -4,11 +4,28 @@
 \alias{NHMM_MVN}
 \title{Bayesian Non-homogeneous Markov Model with Multivariate Normal emission distribution (NHMMMVN)}
 \usage{
-NHMM_MVN(y, subseq = NULL, X = NULL, betapriorm = NULL,
-  betapriorp = NULL, K = 2, iters = 1000, burnin = 200, W = NULL,
-  psipriorm = NULL, psipriorp = NULL, priors1 = NULL,
-  priors2 = NULL, outdir = NULL, ymiss = FALSE, yrep = 0,
-  ypred = 0, Xp = NULL, Wp = NULL, yhold = NULL)
+NHMM_MVN(
+  y,
+  subseq = NULL,
+  X = NULL,
+  betapriorm = NULL,
+  betapriorp = NULL,
+  K = 2,
+  iters = 1000,
+  burnin = 200,
+  W = NULL,
+  psipriorm = NULL,
+  psipriorp = NULL,
+  priors1 = NULL,
+  priors2 = NULL,
+  outdir = NULL,
+  ymiss = FALSE,
+  yrep = 0,
+  ypred = 0,
+  Xp = NULL,
+  Wp = NULL,
+  yhold = NULL
+)
 }
 \arguments{
 \item{y}{T by J matrix of data (J=1 is sufficient)
@@ -116,7 +133,7 @@ pp=OWcoef(my.nhmm1,FALSE)
 tt=Oemparams(my.nhmm1,FALSE)  #just Sigma matrix for MVN, returns mean of Sigma
  
  
- #filelocation="C:\\\\Users\\\\iamrandom\\\\Desktop\\\\here\\\\"
+ #filelocation="C:\\Users\\iamrandom\\Desktop\\here\\"
  #my.nhmm6=NHMM_MVN(y=ymvn[1:1800,],   X=matrix(tX[,1:1800],1,1800), 
  #          W=array(tW2[,1:1800,],dim=c(2,1800,15)), K=3, iters=50, 
  #            burnin=10,outdir=filelocation, ymiss=TRUE, yrep=10, 

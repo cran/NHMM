@@ -4,12 +4,30 @@
 \alias{NHMM}
 \title{Bayesian Non-homogeneous Markov Model (NHMM)}
 \usage{
-NHMM(y, subseq = NULL, X = NULL, betapriorm = NULL,
-  betapriorp = NULL, K = 2, iters = 1000, burnin = 200,
-  emdist = "normal", nmix = 1, delta = FALSE, W = NULL,
-  psipriorm = NULL, psipriorp = NULL, priors = NULL, outdir = NULL,
-  ymiss = FALSE, yrep = 0, ypred = 0, Xp = NULL, Wp = NULL,
-  yhold = NULL)
+NHMM(
+  y,
+  subseq = NULL,
+  X = NULL,
+  betapriorm = NULL,
+  betapriorp = NULL,
+  K = 2,
+  iters = 1000,
+  burnin = 200,
+  emdist = "normal",
+  nmix = 1,
+  delta = FALSE,
+  W = NULL,
+  psipriorm = NULL,
+  psipriorp = NULL,
+  priors = NULL,
+  outdir = NULL,
+  ymiss = FALSE,
+  yrep = 0,
+  ypred = 0,
+  Xp = NULL,
+  Wp = NULL,
+  yhold = NULL
+)
 }
 \arguments{
 \item{y}{T by J matrix of data (J=1 is sufficient)
@@ -155,7 +173,7 @@ tt=Oemparams(my.nhmm,FALSE)
  OBIC(my.nhmm3)
  
  ## Predictive estimation - make 15 predictive data sets (new X) and 20 replicate data sets (same X)
- #filelocation="C:\\\\Users\\\\iamrandom\\\\Desktop\\\\here\\\\"
+ #filelocation="C:\\Users\\iamrandom\\Desktop\\here\\"
  #my.nhmm4=NHMM(y=ygamma,  X=tX, K=3, iters=100, burnin=10, 
  #              emdist="gamma", nmix=3, delta=TRUE, 
  #              outdir=filelocation, yrep=20, Xp=Xp1, ypred=15)
@@ -163,7 +181,7 @@ tt=Oemparams(my.nhmm,FALSE)
  #tt=Oemparams(my.nhmm4,TRUE,filelocation)
  
  ## Exponential with W variable
- #filelocation="C:\\\\Users\\\\iamrandom\\\\Desktop\\\\here\\\\"
+ #filelocation="C:\\Users\\iamrandom\\Desktop\\here\\"
  #my.nhmm5=NHMM(y=ygamma,  X=tX, W=tW1, K=3, iters=50, burnin=10,
  #               emdist="gamma", nmix=3, delta=TRUE, 
  #              outdir=filelocation, yrep=20, Xp=Xp1, Wp=Wp1,ypred=35)
@@ -178,12 +196,16 @@ tt=Oemparams(my.nhmm,FALSE)
                 burnin=10, emdist="gamma", nmix=2, delta=TRUE)
  
  
+ ## One dimensional y vector case (J=1)
+ #my.nhmm=NHMM(y=matrix(ygamma[1:200,1],200,1),  X=matrix(tX[,1:200],1,200),
+ #K=3, iters=40, burnin=2, emdist="gamma", nmix=3, delta=TRUE)
+ 
  ### Compare my.nhmm6 (K=3) and my.nhmm7 (K=1) using both BIC 
  ###     and PLS (yhold is the last 10\% of the data)
  #ygamma2=ygamma
  #ygamma2[1600,10]=NA  #add some missingness
  #ygamma2[1840,10]=NA  #add some missingness to yhold
- #filelocation="C:\\\\Users\\\\iamrandom\\\\Desktop\\\\here\\\\"
+ #filelocation="C:\\Users\\iamrandom\\Desktop\\here\\"
  #my.nhmm7=NHMM(y=ygamma2[1:1800,],  X=matrix(tX[,1:1800],1,1800), 
  #              W=array(tW[,1:1800,],dim=c(1,1800,15)), 
  #              K=3, iters=50, burnin=10, emdist="gamma", nmix=3, 

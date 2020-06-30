@@ -2,8 +2,8 @@ Package: NHMM
 Type: Package
 Title: Bayesian Non-Homogeneous Markov and Mixture Models for Multiple
         Time Series
-Version: 3.10
-Date: 2019-10-29
+Version: 3.11
+Date: 2020-07-01
 Author: Tracy Holsclaw
 Acknowledgements: This work was supported by a grant from the U.S.
         Department of Energy, (through the Earth System Models (EaSM)
@@ -21,9 +21,9 @@ Imports: Rcpp (>= 0.11.0)
 LinkingTo: Rcpp
 Depends: BayesLogit, msm, MCMCpack, MASS
 URL: http://iamrandom.com/nhmm-package
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.0
 Encoding: UTF-8
 NeedsCompilation: yes
-Packaged: 2019-10-30 06:42:22 UTC; iamrandom
+Packaged: 2020-06-30 16:31:17 UTC; iamrandom
 Repository: CRAN
-Date/Publication: 2019-10-30 07:10:05 UTC
+Date/Publication: 2020-06-30 19:30:02 UTC
